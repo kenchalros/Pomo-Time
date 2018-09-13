@@ -1,19 +1,20 @@
 body {
   font-family: 'Courier New', sans-serif;
   font-size: 14px;
-  background: #eee;
+  color: #ddd;
+  background: #1B232B;
 }
 
 .container {
   margin: 20px auto;
   width: 365px;
-  background: #fff;
+  background: #;
   padding: 15px;
   text-align: center;
 }
 
 #timer {
-  background: #ddd;
+  background: #212C39;
   height: 120px;
   line-height: 120px;
   font-size: 40px;
@@ -23,8 +24,8 @@ body {
 .controls > div {
   cursor: pointer;
   user-select: none;
-  width: 80px;
-  background: #ddd;
+  width: 111px;
+  background: #212c39;
   height: 45px;
   line-height: 45px;
   float: left;
@@ -32,6 +33,7 @@ body {
 
 .controls {
   overflow: hidden;
+  padding-left: 1px
 }
 
 .controls > div + div {

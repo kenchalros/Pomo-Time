@@ -2,16 +2,19 @@
   'use strict';
 
   var timer = document.getElementById('timer');
-  var min = document.getElementById('min');
-  var sec = document.getElementById('sec');
-  var reset = document.getElementById('reset');
+  var pomo = document.getElementById('pomo');
+  var breakTimer = document.getElementById('break');
   var start = document.getElementById('start');
 
   var startTime;
   var timeLeft;
-  var timeToCountDown = 0;
+  var timeToCountDown;
   var timerId;
   var isRunning = false;
+  var pomoTime = 25 * 60 * 1000;
+  var breakTime = 5 * 60 * 1000;
+  timer.textContent = "25:00.000";
+  timeToCountDown = pomoTime;
 
   function updateTimer(t) {
     var d = new Date(t);
@@ -24,7 +27,6 @@
     ms = ('00' + ms).slice(-3);
     timerString = m + ':'+ s + '.' + ms;
     timer.textContent = timerString;
-    document.title = timerString;
   }
 
   function countDown() {
@@ -56,28 +58,22 @@
       timeToCountDown = timeLeft;
       clearTimeout(timerId);
     }
-
   });
 
-  min.addEventListener('click', function() {
-    timeToCountDown += 60 * 1000;
-    if (timeToCountDown >= 60 * 60 * 1000) {
-      timeToCountDown = 0
+  pomo.addEventListener('click', function() {
+    if (isRunning === false) {
+      timeToCountDown = pomoTime;
+      startTime = Date.now();
+      updateTimer(timeToCountDown);
     }
-    updateTimer(timeToCountDown);
   });
 
-  sec.addEventListener('click', function() {
-    timeToCountDown += 1000;
-    if (timeToCountDown >= 60 * 60 * 1000) {
-      timeToCountDown = 0
+  breakTimer.addEventListener('click', function() {
+    if (isRunning === false) {
+      timeToCountDown = breakTime;
+      startTime = Date.now();
+      updateTimer(timeToCountDown)
     }
-    updateTimer(timeToCountDown)
-  });
-
-  reset.addEventListener('click', function() {
-    timeToCountDown = 0;
-    updateTimer(timeToCountDown);
   });
 
 })();
